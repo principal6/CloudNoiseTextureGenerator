@@ -224,7 +224,7 @@ void CGame::Draw(float DeltaTime)
 
 void CGame::DrawGameObject2Ds(float DeltaTime)
 {
-	static float TimeFlowFactor{ 0.2f };
+	static float TimeFlowFactor{ 0.1f };
 	static float TimeFlow{};
 	TimeFlow += DeltaTime * TimeFlowFactor;
 	if (TimeFlow > +1.0f) TimeFlowFactor = -TimeFlowFactor;

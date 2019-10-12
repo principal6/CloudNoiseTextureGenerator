@@ -45,7 +45,7 @@ void CTexture::CreateNoiseTexture(const XMFLOAT2& TextureSize)
 
 	vector<float> vRawData{};
 	static constexpr int KNoiseMax{ 255 };
-	static constexpr int KNoiseStep{ 80 };
+	static constexpr int KNoiseStep{ 100 };
 	static constexpr float KNoiseStepF{ static_cast<float>(KNoiseStep) / KNoiseMax };
 	static constexpr float KBias{ 0.2f };
 	size_t TextureWidth{ static_cast<size_t>(TextureSize.x) };
@@ -75,22 +75,6 @@ void CTexture::CreateNoiseTexture(const XMFLOAT2& TextureSize)
 			RawValue = max(RawValue, 0.0f);
 
 			vRawData[y * TextureWidth + x] = static_cast<float>(RawValue);
-		}
-	}
-
-	for (size_t y = 0; y < TextureHeight / 8; ++y)
-	{
-		for (size_t x = 0; x < TextureWidth; ++x)
-		{
-			vRawData[y * TextureWidth + x] *= vRawData[y * TextureWidth + x];
-		}
-	}
-
-	for (size_t y = (TextureHeight / 8) * 7; y < TextureHeight; ++y)
-	{
-		for (size_t x = 0; x < TextureWidth; ++x)
-		{
-			vRawData[y * TextureWidth + x] *= vRawData[y * TextureWidth + x];
 		}
 	}
 
